@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPro Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Homepage Section -->
+    <section id="home">
+        <header>
+            <h1>Welcome to TechPro Academy</h1>
+        </header>
+
+        <section id="hero">
+            <h2>Empowering Tomorrow's IT Professionals</h2>
+            <p>Join the best IT Academy to learn top technologies from industry experts.</p>
+        </section>
+
+        <section id="featured-courses">
+            <h2>Featured Courses</h2>
+            <div class="course">
+                <img src="python.jpg" alt="Python Programming">
+                <h3>Python Programming</h3>
+                <p>Master Python from basics to advanced with real-world projects.</p>
+            </div>
+            <div class="course">
+                <img src="cybersecurity.jpg" alt="Cybersecurity">
+                <h3>Cybersecurity</h3>
+                <p>Learn to secure networks and data, and become a security expert.</p>
+            </div>
+            <div class="course">
+                <img src="data-analysis.jpg" alt="Data Analysis">
+                <h3>Data Analysis</h3>
+                <p>Unlock the power of data and analytics to drive business success.</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- Courses Page Section -->
+    <section id="courses">
+        <header>
+            <h1>Our Courses</h1>
+        </header>
+
+        <section id="filter">
+            <label for="category">Filter by Category:</label>
+            <select id="category" onchange="filterCourses()">
+                <option value="all">All</option>
+                <option value="programming">Programming</option>
+                <option value="networking">Networking</option>
+                <option value="data-science">Data Science</option>
+            </select>
+        </section>
+
+        <section id="course-list">
+            <div class="course" data-category="programming">
+                <img src="python.jpg" alt="Python Programming">
+                <h3>Python Programming</h3>
+                <p>Master Python from basics to advanced with real-world projects.</p>
+            </div>
+            <div class="course" data-category="networking">
+                <img src="networking.jpg" alt="Networking Basics">
+                <h3>Networking Basics</h3>
+                <p>Learn the fundamentals of networking and network architecture.</p>
+            </div>
+            <div class="course" data-category="data-science">
+                <img src="data-analysis.jpg" alt="Data Analysis">
+                <h3>Data Analysis</h3>
+                <p>Unlock the power of data and analytics to drive business success.</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- About Page Section -->
+    <section id="about">
+        <header>
+            <h1>About TechPro Academy</h1>
+        </header>
+
+        <section id="about-info">
+            <h2>History</h2>
+            <p>Founded in 2010, TechPro Academy has been dedicated to providing high-quality IT education for over a decade.</p>
+
+            <h2>Mission</h2>
+            <p>Our mission is to equip students with the skills they need to thrive in the fast-evolving IT industry.</p>
+
+            <h2>Our Staff</h2>
+            <p>Our team consists of industry professionals with a passion for teaching and mentoring the next generation of IT experts.</p>
+
+            <h2>Achievements</h2>
+            <p>We have trained over 10,000 students, with 95% of our graduates landing jobs in top IT companies.</p>
+
+            <h2>Success Stories</h2>
+            <p>Meet some of our successful alumni who are now making a mark in the tech industry.</p>
+        </section>
+    </section>
+
+    <!-- Contact Page Section -->
+    <section id="contact">
+        <header>
+            <h1>Contact TechPro Academy</h1>
+        </header>
+
+        <section id="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Address:</strong> 123 IT Avenue, Tech City, 12345</p>
+            <p><strong>Phone:</strong> +123-456-7890</p>
+            <p><strong>Email:</strong> contact@techproacademy.com</p>
+        </section>
+
+        <section id="contact-form">
+            <h2>Get in Touch</h2>
+            <form id="contact-form" onsubmit="handleSubmit(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea><br>
+
+                <input type="submit" value="Send">
+            </form>
+
+            <!-- Message will be displayed here after submission -->
+            <p id="confirmationMessage" style="display: none; color: green; margin-top: 15px;">
+                Your message has been sent and will be shortly reviewed.
+            </p>
+        </section>
+    </section>
+
+    <footer>
+        <p>© 2024 TechPro Academy</p>
+    </footer>
+
+    <!-- JavaScript for Filtering Courses -->
+    <script>
+        function filterCourses() {
+            const category = document.getElementById('category').value;
+            const courses = document.querySelectorAll('.course');
+
+            courses.forEach(course => {
+                if (category === 'all' || course.getAttribute('data-category') === category) {
+                    course.style.display = 'block';
+                } else {
+                    course.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+
+            // Display the confirmation message
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.style.display = 'block';
+
+            // Clear the form fields after submission
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</body>
+</html>
